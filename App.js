@@ -1,40 +1,24 @@
 import React from 'react';
-import { StyleSheet, Animated, Text, View } from 'react-native';
-
-class FadeInView extends React.Component {
-  state = {
-    fadeAnim: new Animated.Value(0),
-  }
-  componentDidMount() {
-    Animated.timing(
-      this.state.fadeAnim, {
-        toValue: 1,
-        duration: 10000,
-      }
-    ).start();
-  }
-  render() {
-    let { fadeAnim } = this.state;
-    return (
-      <Animated.View
-        style={{
-          ...this.props.style,
-          opacity: fadeAnim,
-        }}
-      >
-        {this.props.children}
-      </Animated.View>
-    );
-  }
-}
+import { StyleSheet, Animated, Easing, Text, View } from 'react-native';
 
 export default class App extends React.Component {
+  componentWillMount() {
+    this.animatedValue = new Animated.Value(100);
+  }
+  componentDidMount() {
+    Animated.timing(this.animatedValue, {
+      toValue: 150,
+      duration: 3000,
+      easing: Easing.bounce,
+    }).start();
+  }
   render() {
+    const animatedStyle = { height: this.animatedValue }
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-        <FadeInView style={{width: 250, height: 50, backgroundColor: 'powderblue'}}>
-          <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>Animated Button</Text>
-        </FadeInView>
+        <Animated.View style={{ justifyContent:'center', alignItems: 'center', backgroundColor: '#000000', height: 100, width: 100, animatedStyle }}>
+          <Text style={{ color: "#FFFFFF" }}>Adams Hawa</Text>
+        </Animated.View>
       </View>
     )
   }
@@ -47,4 +31,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  box: {
+    backgroundColor:  '#000000',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+    width: 100,
+  }
 });
