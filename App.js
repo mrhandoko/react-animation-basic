@@ -16,8 +16,8 @@ export default class App extends React.Component {
               this.animation = animation;
             }}
             style={{
-              width: 80,
-              height: 80,
+              width: 150,
+              height: 150,
             }}
             loop={true}
             source={anim}
