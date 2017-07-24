@@ -43,4 +43,7 @@ const styles = StyleSheet.create({
     height: 100,
     width: 100,
   }
+  mainText: {
+    fontFamily: 'Lato-Regular'
+  }
 });
